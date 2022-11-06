@@ -85,7 +85,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   'anime': '*MENU ANIME*',
   }
   if (teks == 'sound') tags = {
-  'sound': '*MENU RANDOM SOUND*',
+  'sound-random': '*𝚂𝙾𝚄𝙽𝙳 𝚁𝙰𝙽𝙳𝙾𝙼*',
   }
   if (teks == 'sticker') tags = {
   'sticker': '*MENU CONVERT*',
