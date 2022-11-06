@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, command }) => {
-  let res = await fetch('https://caliphapi.com/api/ppcouple?apikey=5pSJCBIB')
+  let res = await fetch('https://api.lolhuman.xyz/api/random/ppcouple?apikey=f52719f8e573fef99020268f')
   if (res.status != 200) throw await res.text()
   let json = await res.json()
   if (!json.status) throw json
