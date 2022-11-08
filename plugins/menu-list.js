@@ -418,13 +418,6 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
            jpegThumbnail: fs.readFileSync('./src/welcome.jpg') },
            hydratedFooterText: wm,
            hydratedButtons: [{
-            urlButton: {
-               displayText: 'MY WEBSITE',
-               url: 'https://Hyzerr.github.io/'
-             }
-
-           },
-             {
               quickReplyButton: {
                displayText: 'Owner',
                id: '.owner',
