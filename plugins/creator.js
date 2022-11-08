@@ -15,12 +15,7 @@ const q = {
 }
 
 conn.sendContact(m.chat, '6282123019956', 'Fikrii', m)
-m.reply(m.chat,'*📮 *Note:*
-• Owner tidak menerima save contact
-• Owner berhak blockir tanpa alasan
-• Berbicaralah yang sopan & tidak spam
-• Owner Hanya merespon yang berkaitan dengan BOT
-• No Telp`*', q)
+m.reply(m.chat,'*Tuh nomor owner ku*\n*Chat jika PENTING*', q)
 }
 handler.help = ['owner', 'creator']
 handler.tags = ['info']
