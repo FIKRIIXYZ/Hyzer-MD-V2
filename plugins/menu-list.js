@@ -275,7 +275,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
                   "rowId": `${_p}? nsfw`
                 }, {
                   "title": "SOUND MENU",
-                  "description": "Menampilkan Menu Nsfw",
+                  "description": "Menampilkan Menu Sound",
                   "rowId": `${_p}? sound`
                 }, {
                   "title": "☰ STICKER & CONVERTER",
