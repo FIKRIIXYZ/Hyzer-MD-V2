@@ -7,6 +7,7 @@ let tags = {
   'advanced': '*ADVANCED*',
   'rpg': '*MENU RPG*',
   'anime': '*MENU ANIME*',
+  'nsfw': '*MENU NSFW*',
   'sticker': '*MENU CONVERT*',
   'downloader': '*MENU DOWNLOADER*',
   'xp': '*MENU EXP*',
