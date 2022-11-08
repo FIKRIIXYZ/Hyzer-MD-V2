@@ -46,14 +46,14 @@ const defaultMenu = {
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'absen', 'rpg', 'anime', 'sound', 'downloader', 'game', 'fun', 'xp', 'github', 'group', 'image', 'quotes', 'admin', 'info', 'internet', 'islam', 'kerang', 'maker', 'owner', 'suara', 'premium', 'quotes', 'info', 'stalk', 'shortlink', 'sticker', 'tools']
+  let arrayMenu = ['all', 'absen', 'rpg', 'anime', 'nsfw', 'downloader', 'game', 'fun', 'xp', 'github', 'group', 'image', 'quotes', 'admin', 'info', 'internet', 'islam', 'kerang', 'maker', 'owner', 'suara', 'premium', 'quotes', 'info', 'stalk', 'shortlink', 'sticker', 'tools']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
   'main': '*MENU UTAMA*',
   'advanced': '*ADVANCED*',
   'absen': '*MENU ABSEN*',
   'anime': '*MENU ANIME*',
-  'sound': '*MENU SOUND*',
+  'nsfw': '*MENU NSFW*',
   'sticker': '*MENU CONVERT*',
   'downloader': '*MENU DOWNLOADER*',
   'xp': '*MENU EXP*',
@@ -84,8 +84,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'anime') tags = {
   'anime': '*MENU ANIME*',
   }
-  if (teks == 'sound') tags = {
-  'sound-random': '*𝚂𝙾𝚄𝙽𝙳 𝚁𝙰𝙽𝙳𝙾𝙼*',
+  if (teks == 'nsfw') tags = {
+  'nsfw': '*MENU NSFW*',
   }
   if (teks == 'sticker') tags = {
   'sticker': '*MENU CONVERT*',
