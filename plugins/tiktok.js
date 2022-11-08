@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 let handler = async (m, { itsu, args }) => {
 if (!args[0]) throw 'Uhm..url nya mana?'
 m.reply(wait)
-let res = await fetch(`https://api.zeeoneofc.xyz/api/downloader/tiktok?url=${args[0]}`)
+let res = await fetch(`https://api.zeeoneofc.xyz/api/downloader/tiktok?apikey=EhrSrgvv&url=${args[0]}`)
 if (!res.ok) throw await res.text()
 let json = await res.json()
 if (!json.status) throw json
