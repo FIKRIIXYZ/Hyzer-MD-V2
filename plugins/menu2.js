@@ -161,15 +161,8 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
            hydratedFooterText: `🅛=limit 🅟=premium`,
            hydratedButtons: [{
              urlButton: {
-               displayText: '📍Instagram',
-               url: instagram
-             }
-
-           },
-             {
-             urlButton: {
                displayText: 'Owner',
-               PhoneNumber: 'https://bit.ly/3FWls1N'
+               PhoneNumber: 'https://tinyurl.com/2bqz9zlv'
              }
 
            },
