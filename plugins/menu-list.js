@@ -229,7 +229,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
       const template = generateWAMessageFromContent(m.key.remoteJid, proto.Message.fromObject({
         listMessage: {
             title: `${ucapan()}, ${name}`,
-            description: `┏━━━━━━━⬣
+            description: `┏━━━━━━━━━━━━━━━⬣
 ┃⬡ Aktif selama ${uptime}
 ┃⬡ ${Object.keys(global.db.data.users).length} Pengguna
 ┃⬡ Mode : ${global.opts['self'] ? 'Self' : 'publik'}
