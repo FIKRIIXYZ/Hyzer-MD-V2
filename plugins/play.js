@@ -1,33 +1,47 @@
-let limit = 30
-const more = String.fromCharCode(8206)
-const readMore = more.repeat(4001)
+const { servers, yta, ytv } = require('../lib/y2mate')
 let yts = require('yt-search')
 let fetch = require('node-fetch')
-const { servers, yta, ytv } = require('../lib/y2mate')
-let handler = async (m, { itsu, command, text, isPrems, isOwner }) => {
-  if (!text) throw 'Cari apa?'
+let handler = async (m, { conn, command, text, usedPrefix }) => {
+  if (!text) throw `uhm.. cari apa?\n\ncontoh:\n${usedPrefix + command} california`
+  let chat = global.db.data.chats[m.chat]
+  await m.reply(global.wait)
   let results = await yts(text)
   let vid = results.all.find(video => video.seconds < 3600)
-  if (!vid) throw 'Video/Audio Tidak ditemukan'
+  if (!vid) throw 'Konten Tidak ditemukan'
   let isVideo = /2$/.test(command)
-  let { dl_link, thumb, title, filesize, filesizeF} = await (isVideo ? ytv : yta)(vid.url, 'id4')
-  let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
-  itsu.sendMessage(m.chat, `*Title:* ${title}\n*Size:* ${filesizeF}` , 'conversation', {quoted: m, thumbnail: global.thumb2, contextInfo:{externalAdReply: {title: 'Simple WhatsApp bot', body: `© ${itsu.user.name}`, sourceUrl: '', thumbnail: global.thumb}}})
-  let _thumb = {}
-  try { if (isVideo) _thumb = { thumbnail: await (await fetch(thumb)).buffer() } }
-  catch (e) { }
-  if (!isLimit) itsu.sendFile(m.chat, dl_link, title + '.mp' + (3 + /2$/.test(command)), `
-*Title:* ${title}
-*Filesize:* ${filesizeF}
-*Source:* ${vid.url}
-`.trim(), m, false, {ptt: true, duration: 400000}, _thumb || {})
+  let yt = false
+  let yt2 = false
+  let usedServer = servers[0]
+  for (let i in servers) {
+    let server = servers[i]
+    try {
+      yt = await yta(vid.url, server)
+      yt2 = await ytv(vid.url, server)
+      usedServer = server
+      break
+    } catch (e) {
+      m.reply(`Server ${server} error!${servers.length >= i + 1 ? '' : '\nmencoba server lain...'}`)
+    }
+  }
+  if (yt === false) throw 'semua server gagal'
+  if (yt2 === false) throw 'semua server gagal'
+  let { dl_link, thumb, title, filesize, filesizeF } = yt
+  await conn.send2ButtonLoc(m.chat, await (await fetch(thumb)).buffer(), `
+┏┉⌣ ┈̥-̶̯͡..̷̴✽̶┄┈┈┈┈┈┈┈┈┈┈┉┓
+┆ *PLAY YOUTUBE*
+└┈┈┈┈┈┈┈┈┈┈┈⌣ ┈̥-̶̯͡..̷̴✽̶⌣ ✽̶
+*💌 Judul:* ${title}
+*🎶 Audio:* ${filesizeF}
+*🎥 Video:* ${yt2.filesizeF}
+*💻 Server y2mate:* ${usedServer}
+`.trim(), wm, `Audio (${filesizeF})`, `.yta ${vid.url}`, `Video (${yt2.filesizeF})`, `.yt ${vid.url}`)
 }
-handler.help = ['play', 'play2'].map(v => v + ' <pencarian>')
+handler.help = ['play'].map(v => v + ' <pencarian>')
 handler.tags = ['downloader']
-handler.command = /^play2?$/i
+handler.command = /^(p|play)$/i
 
 handler.exp = 0
-handler.limit = true
 
 module.exports = handler
 
+let wm = global.botwm
